@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { configuration } from './common/configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigService } from './shared/typeorm.service';
+import { OrderModule } from './api/order/order.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TypeOrmConfigService } from './shared/typeorm.service';
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({ useClass: TypeOrmConfigService }),
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
